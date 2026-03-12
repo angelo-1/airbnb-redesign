@@ -1,0 +1,391 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb | Holiday rentals, cabins, beach houses and more</title>
+    <meta name="description" content="Airbnb-style homepage recreation built with HTML, CSS, and Vanilla JavaScript.">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg?v=20260312-1">
+    <link rel="shortcut icon" href="assets/icons/favicon.svg?v=20260312-1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=20260312-6">
+    <link rel="stylesheet" href="css/layout.css?v=20260312-6">
+    <link rel="stylesheet" href="css/responsive.css?v=20260312-6">
+</head>
+<body>
+    <a class="skip-link" href="#mainContent">Skip to content</a>
+
+    <header class="hero-header">
+        <div class="hero-header__top">
+            <a class="brand" href="#" aria-label="Airbnb home">
+                <span class="brand__symbol" aria-hidden="true">
+                    <svg viewBox="0 0 32 32">
+                        <path d="M16 2C13 2 10.8 3.9 9.4 6.8 7.9 9.8 6.6 13 4.8 16.8c-1 2.1-1.4 4.1-1.1 5.9.4 2.2 1.8 4 4.2 5 2 .8 4.1.7 6-.3 1.5-.8 2.6-2 3.1-3.6.5 1.6 1.6 2.8 3.1 3.6 1.9 1 4 .9 6 .3 2.4-1 3.8-2.8 4.2-5 .3-1.8-.1-3.8-1.1-5.9-1.8-3.8-3.1-7-4.6-10C21.2 3.9 19 2 16 2zm0 4c1.4 0 2.6.9 3.8 3.4 1.3 2.8 2.5 5.7 4.2 9.2.6 1.4.9 2.5.7 3.4-.2 1-.8 1.7-1.8 2.1-.9.3-1.8.3-2.6-.1-1.2-.7-1.9-1.8-1.9-3.3v-5.1c0-1.3-1-2.3-2.3-2.3s-2.3 1-2.3 2.3v5.1c0 1.5-.7 2.6-1.9 3.3-.8.4-1.7.4-2.6.1-1-.4-1.6-1.1-1.8-2.1-.2-.9.1-2 .7-3.4 1.7-3.5 2.9-6.4 4.2-9.2C13.4 6.9 14.6 6 16 6z"></path>
+                    </svg>
+                </span>
+                <span class="brand__word">airbnb</span>
+            </a>
+
+            <nav class="hero-tabs" aria-label="Explore options">
+                <button class="hero-tab hero-tab--active" type="button" data-tab="homes" aria-current="page">
+                    <span class="hero-tab__icon" aria-hidden="true">&#127969;</span>
+                    <span>Homes</span>
+                </button>
+                <button class="hero-tab" type="button" data-tab="experiences">
+                    <span class="hero-tab__icon" aria-hidden="true">&#127878;</span>
+                    <span>Experiences</span>
+                    <span class="hero-tab__badge">NEW</span>
+                </button>
+                <button class="hero-tab" type="button" data-tab="services">
+                    <span class="hero-tab__icon" aria-hidden="true">&#128718;</span>
+                    <span>Services</span>
+                    <span class="hero-tab__badge">NEW</span>
+                </button>
+            </nav>
+
+            <div class="hero-actions">
+                <a href="#" class="hero-actions__host">Become a host</a>
+                <button class="hero-actions__icon-btn" type="button" aria-label="Choose language">
+                    &#127760;
+                </button>
+                <button class="hero-actions__icon-btn" type="button" aria-label="Open menu">
+                    &#9776;
+                </button>
+            </div>
+        </div>
+
+        <form class="hero-search" id="searchForm" role="search" aria-label="Search stays">
+            <div class="hero-search__field" data-field="where" tabindex="0" aria-controls="wherePanel" aria-expanded="false">
+                <label class="hero-search__label-wrap" for="location">
+                    <span class="hero-search__label-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 5.2-7 13-7 13S5 14.2 5 9a7 7 0 0 1 7-7zm0 4.2A2.8 2.8 0 1 0 12 11.8a2.8 2.8 0 0 0 0-5.6z"></path></svg>
+                    </span>
+                    <span class="hero-search__label">Where</span>
+                </label>
+                <input id="location" name="location" type="text" placeholder="Search destinations" autocomplete="off">
+            </div>
+
+            <span class="hero-search__divider" aria-hidden="true"></span>
+
+            <div class="hero-search__field" data-field="when" tabindex="0" aria-controls="whenPanel" aria-expanded="false">
+                <label class="hero-search__label-wrap" for="when">
+                    <span class="hero-search__label-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M7 2h2v2h6V2h2v2h2a2 2 0 0 1 2 2v13a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a2 2 0 0 1 2-2h2V2zm12 8H5v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9z"></path></svg>
+                    </span>
+                    <span class="hero-search__label">When</span>
+                </label>
+                <div class="hero-search__input-wrap">
+                    <input id="when" name="when" type="text" placeholder="Add dates" autocomplete="off">
+                    <button class="hero-search__clear" id="clearWhen" type="button" aria-label="Clear dates" hidden>&times;</button>
+                </div>
+            </div>
+
+            <span class="hero-search__divider" aria-hidden="true"></span>
+
+            <div class="hero-search__field" data-field="who" tabindex="0" aria-controls="whoPanel" aria-expanded="false">
+                <label class="hero-search__label-wrap" for="guests">
+                    <span class="hero-search__label-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"></path></svg>
+                    </span>
+                    <span class="hero-search__label">Who</span>
+                </label>
+                <input id="guests" name="guests" type="text" placeholder="Add guests" autocomplete="off">
+            </div>
+
+            <button class="hero-search__submit" type="submit" aria-label="Search">
+                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="display:block;fill:none;height:16px;width:16px;stroke:currentColor;stroke-width:5;overflow:visible;">
+                    <path d="m13 24c6.0751322 0 11-4.9248678 11-11 0-6.07513225-4.9248678-11-11-11-6.07513225 0-11 4.92486775-11 11 0 6.0751322 4.92486775 11 11 11zm8-3 9 9"></path>
+                </svg>
+                <span>Search</span>
+            </button>
+        </form>
+
+        <section class="search-panels" id="searchPanels">
+            <div class="search-panel search-panel--where" id="wherePanel" role="dialog" aria-label="Suggested destinations" hidden>
+                <h3 class="search-panel__title">Suggested destinations</h3>
+                <ul class="where-list">
+                    <li><button class="where-item" type="button" data-location="Nearby"><span class="where-item__icon">&#10148;</span><span><strong>Nearby</strong><small>Find what's around you</small></span></button></li>
+                    <li><button class="where-item" type="button" data-location="Lonavala, Maharashtra"><span class="where-item__icon">&#127963;&#65039;</span><span><strong>Lonavala, Maharashtra</strong><small>For sights like Karla Caves</small></span></button></li>
+                    <li><button class="where-item" type="button" data-location="North Goa, Goa"><span class="where-item__icon">&#127958;&#65039;</span><span><strong>North Goa, Goa</strong><small>Popular beach destination</small></span></button></li>
+                    <li><button class="where-item" type="button" data-location="Alibag, Maharashtra"><span class="where-item__icon">&#127969;</span><span><strong>Alibag, Maharashtra</strong><small>Near you</small></span></button></li>
+                    <li><button class="where-item" type="button" data-location="Pune, Maharashtra"><span class="where-item__icon">&#127961;&#65039;</span><span><strong>Pune, Maharashtra</strong><small>For sights like Dagdusheth Halwai Ganpati Temple</small></span></button></li>
+                    <li><button class="where-item" type="button" data-location="Karjat, Maharashtra"><span class="where-item__icon">&#127957;&#65039;</span><span><strong>Karjat, Maharashtra</strong><small>Great for a weekend getaway</small></span></button></li>
+                    <li><button class="where-item" type="button" data-location="South Goa, Goa"><span class="where-item__icon">&#127796;</span><span><strong>South Goa, Goa</strong><small>Relaxing coast and beaches</small></span></button></li>
+                </ul>
+            </div>
+
+            <div class="search-panel search-panel--when" id="whenPanel" role="dialog" aria-label="Choose dates" hidden>
+                <div class="when-switch" role="tablist" aria-label="Date mode">
+                    <button type="button" class="when-switch__btn when-switch__btn--active">Dates</button>
+                    <button type="button" class="when-switch__btn">Months</button>
+                    <button type="button" class="when-switch__btn">Flexible</button>
+                </div>
+                <div class="when-calendar-shell">
+                    <button type="button" class="when-calendar__nav" aria-label="Previous month">&#8249;</button>
+                    <div class="when-calendar" id="calendarMonths"></div>
+                    <button type="button" class="when-calendar__nav" aria-label="Next month">&#8250;</button>
+                </div>
+                <div class="when-quick">
+                    <button type="button" class="when-quick__chip when-quick__chip--active">Exact dates</button>
+                    <button type="button" class="when-quick__chip">&plusmn; 1 day</button>
+                    <button type="button" class="when-quick__chip">&plusmn; 2 days</button>
+                    <button type="button" class="when-quick__chip">&plusmn; 3 days</button>
+                    <button type="button" class="when-quick__chip">&plusmn; 7 days</button>
+                    <button type="button" class="when-quick__chip">&plusmn; 14 days</button>
+                </div>
+            </div>
+
+            <div class="search-panel search-panel--who" id="whoPanel" role="dialog" aria-label="Choose guests" hidden>
+                <div class="guest-row" data-guest="adults">
+                    <div>
+                        <strong>Adults</strong>
+                        <small>Ages 13 or above</small>
+                    </div>
+                    <div class="guest-row__controls">
+                        <button type="button" class="guest-row__btn" data-action="decrement">&minus;</button>
+                        <span class="guest-row__count">0</span>
+                        <button type="button" class="guest-row__btn" data-action="increment">+</button>
+                    </div>
+                </div>
+                <div class="guest-row" data-guest="children">
+                    <div>
+                        <strong>Children</strong>
+                        <small>Ages 2-12</small>
+                    </div>
+                    <div class="guest-row__controls">
+                        <button type="button" class="guest-row__btn" data-action="decrement">&minus;</button>
+                        <span class="guest-row__count">0</span>
+                        <button type="button" class="guest-row__btn" data-action="increment">+</button>
+                    </div>
+                </div>
+                <div class="guest-row" data-guest="infants">
+                    <div>
+                        <strong>Infants</strong>
+                        <small>Under 2</small>
+                    </div>
+                    <div class="guest-row__controls">
+                        <button type="button" class="guest-row__btn" data-action="decrement">&minus;</button>
+                        <span class="guest-row__count">0</span>
+                        <button type="button" class="guest-row__btn" data-action="increment">+</button>
+                    </div>
+                </div>
+                <div class="guest-row" data-guest="pets">
+                    <div>
+                        <strong>Pets</strong>
+                        <small><a href="#">Bringing a service animal?</a></small>
+                    </div>
+                    <div class="guest-row__controls">
+                        <button type="button" class="guest-row__btn" data-action="decrement">&minus;</button>
+                        <span class="guest-row__count">0</span>
+                        <button type="button" class="guest-row__btn" data-action="increment">+</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main class="home-main" id="mainContent">
+        <section class="rail" aria-labelledby="popularTitle">
+            <div class="rail__head">
+                <h2 class="rail__title" id="popularTitle">
+                    Popular homes in Pune
+                    <span class="rail__title-arrow" aria-hidden="true">&#8594;</span>
+                </h2>
+                <div class="rail__controls">
+                    <button class="rail__ctrl" type="button" data-target="railPopular" data-dir="left" aria-label="Scroll left">&#8249;</button>
+                    <button class="rail__ctrl" type="button" data-target="railPopular" data-dir="right" aria-label="Scroll right">&#8250;</button>
+                </div>
+            </div>
+            <div class="rail__track" id="railPopular"></div>
+        </section>
+
+        <section class="rail" aria-labelledby="goaTitle">
+            <div class="rail__head">
+                <h2 class="rail__title" id="goaTitle">
+                    Available in North Goa this weekend
+                    <span class="rail__title-arrow" aria-hidden="true">&#8594;</span>
+                </h2>
+                <div class="rail__controls">
+                    <button class="rail__ctrl" type="button" data-target="railGoa" data-dir="left" aria-label="Scroll left">&#8249;</button>
+                    <button class="rail__ctrl" type="button" data-target="railGoa" data-dir="right" aria-label="Scroll right">&#8250;</button>
+                </div>
+            </div>
+            <div class="rail__track" id="railGoa"></div>
+        </section>
+
+        <section class="rail" aria-labelledby="raigadTitle">
+            <div class="rail__head">
+                <h2 class="rail__title" id="raigadTitle">
+                    Homes in Raigad
+                    <span class="rail__title-arrow" aria-hidden="true">&#8594;</span>
+                </h2>
+                <div class="rail__controls">
+                    <button class="rail__ctrl" type="button" data-target="railRaigad" data-dir="left" aria-label="Scroll left">&#8249;</button>
+                    <button class="rail__ctrl" type="button" data-target="railRaigad" data-dir="right" aria-label="Scroll right">&#8250;</button>
+                </div>
+            </div>
+            <div class="rail__track" id="railRaigad"></div>
+        </section>
+
+        <section class="rail" aria-labelledby="bengaluruTitle">
+            <div class="rail__head">
+                <h2 class="rail__title" id="bengaluruTitle">
+                    Available next month in Bengaluru
+                    <span class="rail__title-arrow" aria-hidden="true">&#8594;</span>
+                </h2>
+                <div class="rail__controls">
+                    <button class="rail__ctrl" type="button" data-target="railBengaluru" data-dir="left" aria-label="Scroll left">&#8249;</button>
+                    <button class="rail__ctrl" type="button" data-target="railBengaluru" data-dir="right" aria-label="Scroll right">&#8250;</button>
+                </div>
+            </div>
+            <div class="rail__track" id="railBengaluru"></div>
+        </section>
+
+        <section class="rail" aria-labelledby="nashikTitle">
+            <div class="rail__head">
+                <h2 class="rail__title" id="nashikTitle">
+                    Places to stay in Nashik
+                    <span class="rail__title-arrow" aria-hidden="true">&#8594;</span>
+                </h2>
+                <div class="rail__controls">
+                    <button class="rail__ctrl" type="button" data-target="railNashik" data-dir="left" aria-label="Scroll left">&#8249;</button>
+                    <button class="rail__ctrl" type="button" data-target="railNashik" data-dir="right" aria-label="Scroll right">&#8250;</button>
+                </div>
+            </div>
+            <div class="rail__track" id="railNashik"></div>
+        </section>
+
+        <section class="inspiration" aria-labelledby="inspirationTitle">
+            <h2 class="inspiration__title" id="inspirationTitle">Inspiration for future getaways</h2>
+            <div class="inspiration__tabs" role="tablist" aria-label="Inspiration tabs">
+                <button class="inspiration__tab inspiration__tab--active" type="button" role="tab" aria-selected="true" aria-controls="inspirationUnique" id="tabUnique" data-inspiration-tab="inspirationUnique">Unique stays</button>
+                <button class="inspiration__tab" type="button" role="tab" aria-selected="false" aria-controls="inspirationCategories" id="tabCategories" data-inspiration-tab="inspirationCategories">Categories</button>
+                <button class="inspiration__tab" type="button" role="tab" aria-selected="false" aria-controls="inspirationApartments" id="tabApartments" data-inspiration-tab="inspirationApartments">Airbnb-friendly apartments</button>
+                <button class="inspiration__tab" type="button" role="tab" aria-selected="false" aria-controls="inspirationDestinations" id="tabDestinations" data-inspiration-tab="inspirationDestinations">Popular destinations</button>
+            </div>
+            <div class="inspiration__content">
+                <div class="inspiration__panel inspiration__panel--active" id="inspirationUnique" role="tabpanel" aria-labelledby="tabUnique">
+                    <a class="inspiration__item" href="#"><strong>Cabins</strong><span>United States</span></a>
+                    <a class="inspiration__item" href="#"><strong>Treehouses</strong><span>United States</span></a>
+                    <a class="inspiration__item" href="#"><strong>Tiny Houses</strong><span>United States</span></a>
+                    <a class="inspiration__item" href="#"><strong>Beach Houses</strong><span>United Kingdom</span></a>
+                    <a class="inspiration__item" href="#"><strong>Lakehouses</strong><span>Canada</span></a>
+                    <a class="inspiration__item" href="#"><strong>Yurt Rentals</strong><span>United States</span></a>
+                    <a class="inspiration__item" href="#"><strong>Castle Rentals</strong><span>Ireland</span></a>
+                    <a class="inspiration__item" href="#"><strong>Houseboats</strong><span>Netherlands</span></a>
+                    <a class="inspiration__item" href="#"><strong>Farm Stays</strong><span>Australia</span></a>
+                    <a class="inspiration__item" href="#"><strong>Luxury Cabins</strong><span>United Kingdom</span></a>
+                    <a class="inspiration__item" href="#"><strong>Private Islands</strong><span>Indonesia</span></a>
+                    <a class="inspiration__item" href="#"><strong>Countryside Homes</strong><span>France</span></a>
+                </div>
+                <div class="inspiration__panel" id="inspirationCategories" role="tabpanel" aria-labelledby="tabCategories" hidden>
+                    <a class="inspiration__item" href="#"><strong>Amazing pools</strong><span>In India</span></a>
+                    <a class="inspiration__item" href="#"><strong>Trending</strong><span>Near you</span></a>
+                    <a class="inspiration__item" href="#"><strong>National parks</strong><span>Get back to nature</span></a>
+                    <a class="inspiration__item" href="#"><strong>Lakefront</strong><span>Peaceful water views</span></a>
+                    <a class="inspiration__item" href="#"><strong>Design</strong><span>Architectural stays</span></a>
+                    <a class="inspiration__item" href="#"><strong>Arctic</strong><span>Snow adventures</span></a>
+                    <a class="inspiration__item" href="#"><strong>Luxe</strong><span>Top-tier homes</span></a>
+                    <a class="inspiration__item" href="#"><strong>Camping</strong><span>Outdoor getaways</span></a>
+                </div>
+                <div class="inspiration__panel" id="inspirationApartments" role="tabpanel" aria-labelledby="tabApartments" hidden>
+                    <a class="inspiration__item" href="#"><strong>Mumbai</strong><span>Maharashtra</span></a>
+                    <a class="inspiration__item" href="#"><strong>Bengaluru</strong><span>Karnataka</span></a>
+                    <a class="inspiration__item" href="#"><strong>Pune</strong><span>Maharashtra</span></a>
+                    <a class="inspiration__item" href="#"><strong>Hyderabad</strong><span>Telangana</span></a>
+                    <a class="inspiration__item" href="#"><strong>Chennai</strong><span>Tamil Nadu</span></a>
+                    <a class="inspiration__item" href="#"><strong>Ahmedabad</strong><span>Gujarat</span></a>
+                    <a class="inspiration__item" href="#"><strong>Jaipur</strong><span>Rajasthan</span></a>
+                    <a class="inspiration__item" href="#"><strong>Kochi</strong><span>Kerala</span></a>
+                    <a class="inspiration__item" href="#"><strong>Surat</strong><span>Gujarat</span></a>
+                    <a class="inspiration__item" href="#"><strong>Indore</strong><span>Madhya Pradesh</span></a>
+                </div>
+                <div class="inspiration__panel" id="inspirationDestinations" role="tabpanel" aria-labelledby="tabDestinations" hidden>
+                    <a class="inspiration__item" href="#"><strong>Goa</strong><span>Beach holidays</span></a>
+                    <a class="inspiration__item" href="#"><strong>Udaipur</strong><span>Royal city stays</span></a>
+                    <a class="inspiration__item" href="#"><strong>Manali</strong><span>Mountain breaks</span></a>
+                    <a class="inspiration__item" href="#"><strong>Coorg</strong><span>Weekend retreats</span></a>
+                    <a class="inspiration__item" href="#"><strong>Jaipur</strong><span>Culture and food</span></a>
+                    <a class="inspiration__item" href="#"><strong>Ooty</strong><span>Hill station trips</span></a>
+                    <a class="inspiration__item" href="#"><strong>Lonavala</strong><span>Short getaways</span></a>
+                    <a class="inspiration__item" href="#"><strong>Alibag</strong><span>Near Mumbai</span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" aria-label="Footer">
+        <div class="site-footer__inner">
+            <div class="site-footer__grid">
+                <section class="site-footer__col" aria-labelledby="footerSupport">
+                    <h3 id="footerSupport">Support</h3>
+                    <ul class="site-footer__list">
+                        <li><a href="#">Help Centre</a></li>
+                        <li><a href="#">AirCover</a></li>
+                        <li><a href="#">Anti-discrimination</a></li>
+                        <li><a href="#">Disability support</a></li>
+                        <li><a href="#">Cancellation options</a></li>
+                    </ul>
+                </section>
+                <section class="site-footer__col" aria-labelledby="footerHosting">
+                    <h3 id="footerHosting">Hosting</h3>
+                    <ul class="site-footer__list">
+                        <li><a href="#">Airbnb your home</a></li>
+                        <li><a href="#">AirCover for Hosts</a></li>
+                        <li><a href="#">Hosting resources</a></li>
+                        <li><a href="#">Community forum</a></li>
+                        <li><a href="#">Hosting responsibly</a></li>
+                    </ul>
+                </section>
+                <section class="site-footer__col" aria-labelledby="footerAirbnb">
+                    <h3 id="footerAirbnb">Airbnb</h3>
+                    <ul class="site-footer__list">
+                        <li><a href="#">2026 Summer Release</a></li>
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Investors</a></li>
+                        <li><a href="#">Airbnb.org emergency stays</a></li>
+                    </ul>
+                </section>
+                <section class="site-footer__col" aria-labelledby="footerSocial">
+                    <h3 id="footerSocial">Social</h3>
+                    <ul class="site-footer__list">
+                        <li><a href="#">X (Twitter)</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </section>
+            </div>
+
+            <div class="site-footer__bottom">
+                <div class="site-footer__meta">
+                    <span>&copy; 2026 Airbnb, Inc.</span>
+                    <span class="site-footer__dot" aria-hidden="true"></span>
+                    <a href="#">Privacy</a>
+                    <span class="site-footer__dot" aria-hidden="true"></span>
+                    <a href="#">Terms</a>
+                    <span class="site-footer__dot" aria-hidden="true"></span>
+                    <a href="#">Sitemap</a>
+                </div>
+                <div class="site-footer__actions">
+                    <a href="#" class="site-footer__action">English (IN)</a>
+                    <a href="#" class="site-footer__action">&#8377; INR</a>
+                    <div class="site-footer__social" aria-label="Social links">
+                        <a href="#" aria-label="Facebook">Fb</a>
+                        <a href="#" aria-label="X">X</a>
+                        <a href="#" aria-label="Instagram">Ig</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script defer src="js/search.js?v=20260312-7"></script>
+    <script defer src="js/categories.js?v=20260312-7"></script>
+    <script defer src="js/main.js?v=20260312-7"></script>
+</body>
+</html>
+
